@@ -24,4 +24,13 @@ public class DonationService {
         return donationRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Donation not found"));
     }
+
+    public long getNumberOdBags() {
+        long bags = 0;
+        for (Donation donation :
+                allDonations()) {
+            bags += donation.getQuantity();
+        }
+        return bags;
+    }
 }

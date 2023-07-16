@@ -22,8 +22,9 @@ public class Donation {
     private long id;
     @NotNull
     private int quantity;
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Category> categoryList;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private Category categoryList;
     @OneToOne(fetch = FetchType.EAGER)
     private Institution institution;
     @NotBlank
