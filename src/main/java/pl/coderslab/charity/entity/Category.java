@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "category")
 @Data
-public class category {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
