@@ -16,7 +16,7 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String homeAction(Model model){
+    public String homeAction(Model model) {
         model.addAttribute("countOfDonations", donationService.allDonations().size());
         model.addAttribute("countOfBags", donationService.getNumberOdBags());
         model.addAttribute("institutions", institutionService.allInstitutions());

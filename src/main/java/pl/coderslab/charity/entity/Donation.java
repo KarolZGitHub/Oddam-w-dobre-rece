@@ -2,6 +2,7 @@ package pl.coderslab.charity.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.repository.InstitutionRepository;
 
 import javax.persistence.*;
@@ -35,8 +36,10 @@ public class Donation {
     @Length(min = 6, max = 6)
     private String zipCode;
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-    @NotNull
     private LocalTime pickUpTime;
     private String pickUpComment;
+    @NotNull
+    private String phoneNumber;
 }
