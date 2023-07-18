@@ -193,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(`#pickUpComment`).innerHTML = pickUpComment;
             console.log(selectedCategories);
         }
-
     }
 
     const form = document.querySelector(".form--steps");

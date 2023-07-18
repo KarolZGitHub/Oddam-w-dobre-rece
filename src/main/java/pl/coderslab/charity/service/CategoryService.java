@@ -7,9 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.repository.CategoryRepository;
 
-import java.net.http.HttpResponse;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

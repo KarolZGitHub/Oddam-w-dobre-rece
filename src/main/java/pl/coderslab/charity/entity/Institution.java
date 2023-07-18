@@ -1,7 +1,6 @@
 package pl.coderslab.charity.entity;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotBlank
     private String name;
     @NotBlank

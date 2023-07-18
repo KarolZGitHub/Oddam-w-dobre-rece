@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotBlank
     private String name;
 }

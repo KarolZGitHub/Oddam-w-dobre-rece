@@ -3,16 +3,16 @@ package pl.coderslab.charity.entity;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.coderslab.charity.repository.InstitutionRepository;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Positive;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "donation")
@@ -20,13 +20,15 @@ import java.util.List;
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @NotNull
+    private Long id;
+    @Positive
     private int quantity;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
-    private Category categoryList;
-    @OneToOne(fetch = FetchType.EAGER)
+    @NotEmpty
+    private Set<Category> categories;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull
     private Institution institution;
     @NotBlank
     private String street;

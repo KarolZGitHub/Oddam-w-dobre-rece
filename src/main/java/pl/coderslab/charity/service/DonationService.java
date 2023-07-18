@@ -4,14 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.repository.DonationRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,10 +33,12 @@ public class DonationService {
         }
         return bags;
     }
-    public void saveDonation(Donation donation){
+
+    public void saveDonation(Donation donation) {
         donationRepository.save(donation);
     }
-    public LocalDate getLocalDateFromString(String dateString){
+
+    public LocalDate getLocalDateFromString(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(dateString, formatter);
         return date;
