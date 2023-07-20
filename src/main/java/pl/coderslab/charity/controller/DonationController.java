@@ -24,7 +24,7 @@ public class DonationController {
     @RequestMapping("/donationForm")
     public String showDonationDorm(Model model) {
         model.addAttribute("categories", categoryService.allCategories());
-        model.addAttribute("institutions", institutionService.allInstitutions());
+        model.addAttribute("institutions", institutionService.mainPageList());
         return "form";
     }
 
@@ -33,7 +33,6 @@ public class DonationController {
         if (bindingResult.hasErrors()) {
             return "form";
         }
-        donation.setPickUpTime(LocalTime.now());
         donationService.saveDonation(donation);
         return "redirect:/";
     }

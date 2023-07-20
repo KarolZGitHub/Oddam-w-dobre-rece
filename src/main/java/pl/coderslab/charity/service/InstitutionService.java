@@ -1,6 +1,9 @@
 package pl.coderslab.charity.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,5 +24,13 @@ public class InstitutionService {
     public Institution findInstitutionById(long id) {
         return institutionRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Institution not found"));
+    }
+
+    public List<Institution> mainPageList() {
+        int pageNumber = 0;
+        int pageSize = 4;
+        Pageable pageable = PageRequest.of(pageNumber,pageSize);
+        Page<Institution> institutions = institutionRepository.findAll(pageable);
+        return institutions.getContent();
     }
 }

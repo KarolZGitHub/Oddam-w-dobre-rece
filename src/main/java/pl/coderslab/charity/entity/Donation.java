@@ -40,8 +40,9 @@ public class Donation {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
+    @NotNull
     private LocalTime pickUpTime;
     private String pickUpComment;
-    @NotNull
+    @NotBlank
     private String phoneNumber;
 }

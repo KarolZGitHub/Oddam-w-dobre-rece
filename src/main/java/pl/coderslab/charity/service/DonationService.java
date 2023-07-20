@@ -16,8 +16,8 @@ import java.util.List;
 public class DonationService {
     private final DonationRepository donationRepository;
 
-    public List<Donation> allDonations() {
-        return donationRepository.findAll();
+    public long numberOfDonations(){
+        return donationRepository.count();
     }
 
     public Donation findDonationById(long id) {
@@ -26,21 +26,11 @@ public class DonationService {
     }
 
     public long getNumberOdBags() {
-        long bags = 0;
-        for (Donation donation :
-                allDonations()) {
-            bags += donation.getQuantity();
-        }
-        return bags;
+        return donationRepository.quantity();
     }
 
     public void saveDonation(Donation donation) {
         donationRepository.save(donation);
     }
 
-    public LocalDate getLocalDateFromString(String dateString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.parse(dateString, formatter);
-        return date;
-    }
 }
