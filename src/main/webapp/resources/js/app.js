@@ -165,16 +165,26 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
             // TODO: get data from inputs and show them in summary
-            const checkboxes = document.querySelectorAll('input[name="categoryList"]:checked');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="categories"]:checked');
             const selectedCategories = [];
             checkboxes.forEach(checkbox => {
                 const categoryName = checkbox.nextElementSibling.nextElementSibling.innerHTML;
                 selectedCategories.push(categoryName);
             });
+            const container = document.getElementById("institutionContainer");
+
+            // Find all the institutions
+            const institutions = container.getElementsByClassName("form-group--checkbox");
+            let selectedInstitutionName = '';
+            let selectedInstitutionDescription = '';
+            // Loop through each institution
+            for (const institution of institutions) {
+                // Extract the values
+                selectedInstitutionName = institution.querySelector(".title").textContent;
+               selectedInstitutionDescription = institution.querySelector(".subtitle").textContent;
+            }
 
             const quantity = document.querySelector('input[name="quantity"]').value;
-            const institutionName = document.querySelector('#institutionName').innerText;
-            const institutionDescription = document.querySelector('#institutionDescription').innerText;
             const street = document.querySelector('input[name="street"]').value;
             const city = document.querySelector('input[name="city"]').value;
             const zipCode = document.querySelector('input[name="zipCode"]').value;
@@ -183,15 +193,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const pickUpTime = document.querySelector('input[name="pickUpTime"]').value;
             const pickUpComment = document.querySelector('textarea[name="pickUpComment"]').value;
             document.querySelector("#bags").innerHTML = quantity + " worków z przedmiotami z kategori: " + selectedCategories + ".";
-            document.querySelector(`#for`).innerHTML = institutionName + ", " + institutionDescription;
-            document.querySelector(`#street`).innerHTML = street;
-            document.querySelector(`#city`).innerHTML = city;
-            document.querySelector(`#zipCode`).innerHTML = zipCode;
-            document.querySelector(`#phoneNumber`).innerHTML = phoneNumber;
-            document.querySelector(`#pickUpDate`).innerHTML = pickUpDate;
-            document.querySelector(`#pickUpTime`).innerHTML = pickUpTime;
-            document.querySelector(`#pickUpComment`).innerHTML = pickUpComment;
-            console.log(selectedCategories);
+            document.querySelector(`#for`).innerHTML = selectedInstitutionName + " " + selectedInstitutionDescription;
+            document.getElementById("streetLi").textContent = "Ulica: " + street;
+            document.getElementById("cityLi").textContent = "Miasto: " + city;
+            document.getElementById("zipCodeLi").textContent = "Kod pocztowy: " + zipCode;
+            document.getElementById("phoneNumberLi").textContent = "Numer telefonu: " + phoneNumber;
+            document.getElementById("pickUpDateLi").textContent = "Data odbioru: " + pickUpDate;
+            document.getElementById("pickUpTimeLi").textContent = "Godzina odbioru: " + pickUpTime;
+            document.getElementById("pickUpCommentLi").textContent = "Komentarz: " + pickUpComment;
+
         }
     }
 

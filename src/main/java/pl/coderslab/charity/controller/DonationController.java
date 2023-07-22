@@ -29,7 +29,7 @@ public class DonationController {
         return categoryService.allCategories();
     }
 
-    @ModelAttribute("allCategories")
+    @ModelAttribute("allInstitutions")
     public List<Institution> allInstitutions() {
         return institutionService.allInstitutions();
     }

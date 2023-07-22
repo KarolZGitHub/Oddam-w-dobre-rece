@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="header.jsp"%>
-    <a href="#" class="btn btn--large">Załóż konto</a>
+<%@include file="header.jsp" %>
+<a href="#" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us">
@@ -27,19 +27,19 @@
 
         <ul class="help--slides-items">
             <c:forEach items="${institutions}" var="institution" varStatus="status">
+                <c:if test="${status.index % 2 ==0}">
+                    <li>
+                </c:if>
                 <div class="col">
                     <div class="title">${institution.name}</div>
                     <div class="subtitle">Cel i misja: ${institution.description}</div>
                 </div>
-                    <c:if test="${status.index % 2 ==0}">
-                        <li>
-                    </c:if>
-                    <c:if test="${status.index % 2 !=0}">
-                        </li>
-                    </c:if>
+                <c:if test="${status.index % 2 !=0}">
+                    </li>
+                </c:if>
             </c:forEach>
         </ul>
     </div>
 
 </section>
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
