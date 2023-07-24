@@ -35,7 +35,7 @@
             <c:forEach var="category" items="${allCategories}">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="checkbox" name="categories" value="${category.id}"/>
+                        <form:checkbox path="categories" value="${category.id}"/>
                         <span class="checkbox"></span>
                         <span class="description">${category.name}</span>
                     </label>
@@ -53,7 +53,7 @@
             <div class="form-group form-group--inline">
                 <label>
                     Liczba 60l worków:
-                    <form:input id="formQuantity" type="number" path="quantity" step="1" min="1"/>
+                    <form:input type="number" path="quantity" step="1" min="1"/>
                 </label>
             </div>
 
@@ -71,7 +71,7 @@
                 <c:forEach var="intitution" items="${allInstitutions}">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" id="institution" value="${intitution}"/>
+                            <form:radiobutton path="institution" value="${intitution}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                                         <div class="title">${intitution.name}</div>
@@ -95,22 +95,22 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input type="text" path="street"/> </label>
+                            <label> Ulica <form:input path="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <form:input type="text" path="city"/> </label>
+                            <label> Miasto <form:input path="city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input type="text" path="zipCode"/>
+                                Kod pocztowy <form:input path="zipCode"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <form:input type="phone" path="phoneNumber"/>
+                                Numer telefonu <form:input path="phoneNumber"/>
                             </label>
                         </div>
                     </div>

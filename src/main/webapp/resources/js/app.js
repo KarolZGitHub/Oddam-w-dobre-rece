@@ -165,24 +165,29 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.parentElement.hidden = this.currentStep >= 5;
 
             // TODO: get data from inputs and show them in summary
-            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="categories"]:checked');
+            const checkboxes = document.querySelectorAll('input[name="categories"]:checked');
             const selectedCategories = [];
             checkboxes.forEach(checkbox => {
-                const categoryName = checkbox.nextElementSibling.nextElementSibling.innerHTML;
+                const categoryName = checkbox.parentElement.querySelector(`.description`).innerText;
                 selectedCategories.push(categoryName);
             });
-            const container = document.getElementById("institutionContainer");
+            // const container = document.getElementById("institutionContainer");
 
-            // Find all the institutions
-            const institutions = container.getElementsByClassName("form-group--checkbox");
-            let selectedInstitutionName = '';
-            let selectedInstitutionDescription = '';
-            // Loop through each institution
-            for (const institution of institutions) {
-                // Extract the values
-                selectedInstitutionName = institution.querySelector(".title").textContent;
-               selectedInstitutionDescription = institution.querySelector(".subtitle").textContent;
-            }
+            // // Find all the institutions
+            // const institutions = container.getElementsByClassName("form-group--checkbox");
+            // let selectedInstitutionName = '';
+            // let selectedInstitutionDescription = '';
+            // // Loop through each institution
+            // for (const institution of institutions) {
+            //     // Extract the values
+            //     selectedInstitutionName = institution.querySelector(".title").textContent;
+            //    selectedInstitutionDescription = institution.querySelector(".subtitle").textContent;
+            // }
+
+            const institutionRadio = document.querySelector('input[name="institution"]:checked');
+            const selectedInstitutionName = institutionRadio.parentElement.querySelector(`.title`).innerText;
+            const selectedInstitutionDescription = institutionRadio.parentElement.querySelector(`.subtitle`).innerText;
+
 
             const quantity = document.querySelector('input[name="quantity"]').value;
             const street = document.querySelector('input[name="street"]').value;
